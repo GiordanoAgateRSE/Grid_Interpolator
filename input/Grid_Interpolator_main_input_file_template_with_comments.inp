@@ -1,0 +1,141 @@
+! Grid Interpolator main input file: template and comments
+!-------------------------------------------------------------------------------
+! "Grid_Interpolator v.3.0" (Grid manager tool)
+! Copyright 2016-2022 (RSE SpA)
+! "Grid_Interpolator v.3.0" authors and email contact are provided on 
+! the documentation file.
+! This program is free software: you can redistribute it and/or modify
+! it under the terms of the GNU General Public License as published by
+! the Free Software Foundation, either version 3 of the License, or
+! (at your option) any later version.
+! This program is distributed in the hope that it will be useful,
+! but WITHOUT ANY WARRANTY; without even the implied warranty of
+! MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+! GNU General Public License for more details.
+! You should have received a copy of the GNU General Public License
+! along with this program. If not, see <http://www.gnu.org/licenses/>.
+!-------------------------------------------------------------------------------
+! This template file can be filled in to complete the input file "*.inp" for 
+!   any test case. The comment lines have to be removed before the execution.
+! Legend:
+!    !    beginning of a comment line
+!    ![?] beginning of a definition/guideline
+!    <>   the content within these brackets represents an input variable
+!    ![*] beginning of the structure of a line with the names of the input 
+!         variables
+!    ...  possible repetitions of the above/previous data
+!    !<<< beginning of a section to be filled with input data
+!    ___  space to be replaced with an input value
+!    !>>> end of a section to be filled with input data
+!    =    start of a variable value
+!-------------------------------------------------------------------------------
+![?] <x_min_out>: minimum x-coordinate over the boundary of the output grid
+![?] <y_min_out>: minimum y-coordinate over the boundary of the output grid
+![?] <z_min_out>: minimum z-coordinate over the boundary of the output grid
+![?] <x_max_out>: maximum x-coordinate over the boundary of the output grid
+![?] <y_max_out>: maximum y-coordinate over the boundary of the output grid
+![?] <z_max_out>: maximum z-coordinate over the boundary of the output grid
+![?] Minimum and maximum output coordinates may coincide: no cell in that 
+!    directions, but one vertex (grid dimensionality is reduced).
+![?] <dx_out>: spatial resolution of the output grid along x-axis
+![?] <dy_out>: spatial resolution of the output grid along y-axis
+![?] <dz_out>: spatial resolution of the output grid along z-axis
+![?] <normalized_threshold_pos>: values greater than a positive threshold are 
+!    discarded. The threshold is provided in input as a normalized variable. 
+!    The positive threshold is: “threshold_pos” = “mean” + 
+!    “normalized_threshold_pos” * “sigma”, where “mean” is the average and 
+!    “sigma” the standard deviation.
+![?] <normalized_threshold_neg>: values smaller than a negative threshold are 
+!    discarded. The threshold is provided in input as a normalized variable. 
+!    The negative threshold is: “threshold_neg” = “mean” - 
+!    “normalized_threshold_neg” * “sigma”.
+![?] <normalized_influence_radius>: The influence radius for interpolation is: 
+!    "influence_radius" = "normalized_influence_radius" * sqrt(3) * "dx_out"
+!    Default value: 0.43 (i.e., influence radius of 0.74 * dx_out): this value 
+!    avoids any interpolation along x_i if dx_i_out=dx_i_in and permits a  
+!    minimum but successful interpolation if dx_i_out>dx_i_in.
+![?] <distance_exponent>: exponent of the distance for Shepard's interpolation 
+!    (a positive integer)
+![?] <abs_mean_latitude>: absolute value of the mean latitude with respect to 
+!    the maximum latitude variation, provided the minimum latitude. 
+!    Typically, abs_mean_latitude = lat_min + delta_lat/2. lat_min is the 
+!    database minimum latitudeIn case of negative value, the input and output 
+!    reference systems are supposed to be Cartesian 
+!    or cartographic: no conversion to geographic coordinates is carried out.
+![?] <missing_data_value>: missing-data value assigned in output. The 
+!    missing-data value in input is assumed to be "-999." .
+![?] <dry_input_value>: formal input value assigned to dry cells (different 
+!    from no-data cells). In the ".asc" output file, it is replaced by 
+!    <missing_data_value> as if it were no data (this is requested by some GIS 
+!    software. 
+!-------------------------------------------------------------------------------
+![*] <x_min_out> <y_min_out> <z_min_out> <x_max_out> <y_max_out> 
+!    <z_max_out> <dx_out> <dy_out> <dz_out>
+![*] <normalized_threshold_pos> <normalized_threshold_neg> 
+!    <normalized_influence_radius> <distance_exponent>
+![*] <abs_mean_latitude>
+![*] <missing_data_value> <dry_input_value>
+!-------------------------------------------------------------------------------
+!<<<****************************************************************************
+! This is a mandatory (comment) line
+___ ___ ___ ___ ___ ___ ___ ___ ___
+! This is a mandatory (comment) line
+___ ___ ___ ___
+! This is a mandatory (comment) line
+___
+! This is a mandatory (comment) line
+___ ___
+!>>>****************************************************************************
+!-------------------------------------------------------------------------------
+![?] <n_parts_out_x>: number of parts of the output grid along x-axis. The 
+!                     output grid is possibly partitioned in several files. 
+!                     They are ordered as follows: x-values ascending, then 
+!                     y-values descending, finally z-values ascending.
+!                     <n_parts_out_x> cannot be larger than 
+!                     (<x_max_out>-<x_min_out>)/<dx_out>
+!-------------------------------------------------------------------------------
+![*] <n_parts_out_x> <n_parts_out_y> <n_parts_out_z>
+!-------------------------------------------------------------------------------
+!<<<****************************************************************************
+! This is a mandatory (comment) line
+___ ___ ___
+!>>>****************************************************************************
+![?] <n_input_grid_files>: number of input grid files
+!-------------------------------------------------------------------------------
+![*] <n_input_grid_files>
+!-------------------------------------------------------------------------------
+!<<<****************************************************************************
+! This is a mandatory (comment) line
+___
+!>>>****************************************************************************
+!-------------------------------------------------------------------------------
+![?] The current section has to be repeated for each input grid file
+![?] <input_grid_file_name>: name (extension included) of the grid input file. 
+!    This file (e.g. ".prn") has the following format: the first line is 
+!    commented; each of the following lines is a record of 4 columns ("x", "y", 
+!    "z", variable to be interpolated). The values "-999." are not involved in 
+!    the interpolation procedure.
+![?] <n_points_in_file>: number of input records/points of the current file
+!-------------------------------------------------------------------------------
+![*] <input_grid_file_name> <n_points_in_file> 
+!-------------------------------------------------------------------------------
+!<<<****************************************************************************
+! This is a mandatory (comment) line
+___ ___
+!>>>****************************************************************************
+!-------------------------------------------------------------------------------
+![?] (<x_lon_trans>,<y_lat_trans>): vector of horizontal translation. It is 
+!    applied to all the output points before the writing on the output files. 
+!    This procedure allows to come back to the global reference system after 
+!    SPHERA simulation on a local reference system and after the possible 
+!    reference system conversion to geographic coordinates (within Grid 
+!    Interpolator). In this case, the translation vector is expressed in 
+!    longitude and latitude (otherwise in x and y).
+!-------------------------------------------------------------------------------
+![*] <x_lon_trans> <y_lat_trans>  
+!-------------------------------------------------------------------------------
+!<<<****************************************************************************
+! This is a mandatory (comment) line
+___ ___
+!>>>****************************************************************************
+!-------------------------------------------------------------------------------

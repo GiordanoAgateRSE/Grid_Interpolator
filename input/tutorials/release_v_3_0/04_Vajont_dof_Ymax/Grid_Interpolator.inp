@@ -1,0 +1,16 @@
+!x_min y_min z_min x_max y_max z_max dx_out dy_out dz_out
+9519.76 17344.8 0. 11076.4 20773.6 0. 10. 10. 2.e-3
+!normalized_threshold_pos normalized_threshold_neg normalized_influence_radius distance_exponent
+100. 100. 0.43 2
+! <abs_mean_latitude>
+-999.
+! missing_data_value dry_input_value
+-999. -99.9
+! <n_parts_out_x> <n_parts_out_y> <n_parts_out_z>
+1 1 1
+! n_input_grid_files
+1
+! input_grid_file_name_1 n_points_in_file_1 
+douf_Vajont_hmax_qmax_Umax_SPH69_for_GrI.csv 159023
+!x_lon_trans y_lat_trans
+0.000000 0.000000
